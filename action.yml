@@ -1,0 +1,23 @@
+name: 'Issue Reminder'
+author: 'UGRC'
+description: 'Posts issue comments when reminders are due'
+branding:
+  icon: 'calendar'
+  color: 'white'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+  pre: chainguard-phonehome.js
+inputs:
+  repoToken:
+    description: 'github token'
+    required: true
+    default: '${{ github.token }}'
+  repository:
+    description: 'the repository name'
+    required: true
+    default: '${{ github.repository }}'
+  repositoryOwner:
+    description: 'the repository owner'
+    required: true
+    default: '${{ github.repository_owner }}'
