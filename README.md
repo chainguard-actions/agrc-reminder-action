@@ -10,6 +10,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 |---------|-----|-----------------|
 | v1.0.17 | [`v1.0.17`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.17) | [`c0ccba1`](https://github.com/agrc/reminder-action/commit/c0ccba185490ad2c0f1de824d625f71d705a6312) |
 | v1.0.18 | [`v1.0.18`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.18) | [`3095f64`](https://github.com/agrc/reminder-action/commit/3095f64f8f0c26c751bee802cb1008ece5953078) |
+| v1.0.20 | [`v1.0.20`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.20) | [`7655148`](https://github.com/agrc/reminder-action/commit/7655148211429c46835bd4aad94a43ab8bf096e2) |
 | v1.0.21 | [`v1.0.21`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.21) | [`76a6297`](https://github.com/agrc/reminder-action/commit/76a6297d144adb572b4cf6d9c0ee667f0ec6b832) |
 
 ## Privacy
