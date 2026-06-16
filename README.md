@@ -1,16 +1,45 @@
-# agrc/reminder-action
+# Reminder Action
 
-Posts issue comments when reminders are due
+[![Push Events](https://github.com/agrc/reminder-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/reminder-action/actions/workflows/push.yml)
 
-Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/agrc/reminder-action](https://github.com/agrc/reminder-action).
+## About
 
-## Versions
+Based on the [probot reminder bot](https://github.com/probot/reminders/) that no longer works. Now in a 2 part github action form! One action to create the reminder metadata and label. And another to run on a schedule to let you know when your reminder is due.
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v1.0.17 | [`v1.0.17`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.17) | [`c0ccba1`](https://github.com/agrc/reminder-action/commit/c0ccba185490ad2c0f1de824d625f71d705a6312) |
-| v1.0.18 | [`v1.0.18`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.18) | [`3095f64`](https://github.com/agrc/reminder-action/commit/3095f64f8f0c26c751bee802cb1008ece5953078) |
-| v1.0.21 | [`v1.0.21`](https://github.com/chainguard-actions/agrc-reminder-action/tree/v1.0.21) | [`76a6297`](https://github.com/agrc/reminder-action/commit/76a6297d144adb572b4cf6d9c0ee667f0ec6b832) |
+_This action requires the use of [agrc/create-reminder-action](https://github.com/agrc/create-reminder-action) as well._
+
+Use the `/remind` slash command to set a reminder on any comment box on GitHub and you'll get a ping about it again when the reminder is due.
+
+Use any form of `/remind me [what] [when]`, such as:
+
+- `/remind me to deploy on Oct 10`
+- `/remind me next Monday to review the requirements`
+- `/remind me that the specs on the rotary girder need checked in 6 months`
+
+## Sample Usage
+
+> [!TIP]
+> Add `issues: write` and `pull-requests: write` if you intend to use reminders in pull requests and issues.
+
+```yml
+name: 'check reminders'
+
+on:
+  schedule:
+    - cron: '10 * * * *'
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  reminder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: check reminders and notify
+        uses: agrc/reminder-action@v1
+```
 
 ## Privacy
 
