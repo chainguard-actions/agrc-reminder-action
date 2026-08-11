@@ -1,0 +1,18 @@
+name: Scheduled Events
+
+on:
+  schedule:
+    - cron: "10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  reminder:
+    name: Notify
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ⚠️ Notify
+      uses: agrc/reminder-action@ab1f38534c17a1c16ba96eaf5fb9c0015d509301 # v1

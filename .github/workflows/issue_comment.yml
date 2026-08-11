@@ -1,0 +1,18 @@
+name: Issue Comment Events
+
+permissions:
+  issues: write
+  pull-requests: write
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  reminder:
+    name: Check for reminder
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔍 Check for reminder
+        uses: agrc/create-reminder-action@c2025868f56a49dfc239012c78cb8e2beee5554e # v1
