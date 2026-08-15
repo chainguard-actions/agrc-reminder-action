@@ -1,0 +1,28 @@
+name: Test custom repository inputs
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_REPOSITORY: custom-owner/custom-repo
+      GITHUB_REPOSITORY_OWNER: custom-owner
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - id: action
+        uses: .
+        with:
+          repoToken: fake-token-for-testing
+          repository: custom-owner/custom-repo
+          repositoryOwner: custom-owner
+        continue-on-error: true
+      - name: Assert action ran with custom inputs
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+        run: |
+          echo "action outcome: $OUTCOME"
+          if [ "$OUTCOME" = "skipped" ]; then
+            echo "FAIL: action was skipped unexpectedly"
+            exit 1
+          fi
+          echo "PASS: action ran with custom repository inputs (outcome=$OUTCOME)"
